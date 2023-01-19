@@ -4,35 +4,52 @@ import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import { createTheme } from '@mui/material/styles';
 
 import "./styles.scss";
 import { Button } from '@mui/material';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#3f50b5',
+      dark: '#002884',
+      contrastText: '#fff',
+    }
+  }
+})
+
 const images = [
   {
+    topTitle: 'Melhores ofertas personalidas',
     title: 'Queima de estoque NIKE',
+    img:'https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/fire_1f525.png',
     description: 'Bla bla bla bla bla',
-    actionButton: 'Saiba mais',
+    actionButton: 'Ver ofertas',
     image: 'https://freepngimg.com/thumb/categories/627.png',
   },
   {
+    topTitle: 'Melhores ofertas personalidas',
     title: 'Últimas unidades Olympkus ',
     description: 'Bla bla bla bla bla',
-    actionButton: 'Saiba mais',
+    actionButton: 'Ver ofertas',
     image: 'https://www.pngmart.com/files/1/Nike-Shoes-PNG-Clipart.png',
   },
   {
+    topTitle: 'Melhores ofertas personalidas',
     title: 'Rebook em promoção',
     description: 'Bla bla bla bla bla',
-    actionButton: 'Comprar agora',
+    actionButton: 'Ver ofertas',
     image: 'https://www.pngmart.com/files/1/Women-Shoes-PNG-Clipart.png',
   },
   {
+    topTitle: 'Melhores ofertas personalidas',
     title: 'Aproveite ',
     description: 'Bla bla bla bla bla',
-    actionButton: 'Comprar agora',
+    actionButton: 'Ver ofertas',
     image: 'https://www.pngmart.com/files/1/Women-Shoes.png',
   },
 ];
@@ -60,7 +77,7 @@ export default function Banner() {
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
         index={activeStep}
-        onChangeIndex={handleStepChange}
+        // onChangeIndex={handleStepChange}
         enableMouseEvents
       >
         {images.map((step, index) => (
@@ -68,7 +85,9 @@ export default function Banner() {
             {Math.abs(activeStep - index) <= 2 ? (
               <section className="carousel">
                 <div>
+                    <h4>{step.topTitle}</h4>
                     <h1>{step.title}</h1>
+                    <img src={step.img} className='fire'></img>
                     <p>{step.description}</p>
 
                     <Button color="primary" variant="contained">
@@ -92,5 +111,3 @@ export default function Banner() {
     </Box>
   );
 }
-
-
