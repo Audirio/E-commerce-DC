@@ -39,7 +39,7 @@ const images = [
 
 export function CardColecao(props) {
   return (
-    <Grid container sx={{ width: 450, height: 200, backgroundColor: '#D8D8D8', borderRadius: 2 }}>
+    <Grid container sx={{ width: 400, height: 200, backgroundColor: '#D8D8D8', borderRadius: 2 }}>
       <Grid item xs={6} >
 
         <div style={{ height: 10, marginTop: 5  , marginLeft: 5 }}>
