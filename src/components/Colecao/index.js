@@ -1,76 +1,92 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 
-//import "./styles.scss";
-import { StyleSheet, StatusBar, SafeAreaView, Text, View } from 'react';
+import "./styles.scss";
+import { Button, Grid, Paper, Text, Typography } from '@mui/material';
 
 
 
 const images = [
   {
-    title: 'Tenis NIKE',
-    description: 'Super coleção Nike',
+    title: 'Coleção',
+    description: 'Nike',
     actionButton: 'Saiba mais',
     image: 'https://freepngimg.com/thumb/categories/627.png',
+    actionButton: 'Ver ofertas',
+    discount: true
   },
   {
-    title: 'Tenis Olympkus ',
-    description: 'Super coleção Olympkus',
+    title: 'Coleção',
+    description: 'Gillette',
     actionButton: 'Saiba mais',
-    image: 'https://www.pngmart.com/files/1/Nike-Shoes-PNG-Clipart.png',
+    image: 'https://freepngimg.com/thumb/artificial_grass/47653-9-razor-download-hd-png.png',
+    actionButton: 'Ver ofertas',
+    discount: false
   },
   {
-    title: 'Rebook coleção',
-    description: 'Rebook super coleção',
+    title: 'Coleção',
+    description: 'Airpods',
     actionButton: 'Comprar agora',
-    image: 'https://assets.reebok.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/645dd61a00924f37b033ae3600972b9f_9366/Classic_Leather_Make_It_Yours_Shoes_Blue_GY1522_01_standard.jpg',
+    image: 'https://freepngimg.com/thumb/bluetooth/82364-airpods-gear-samsung-iconx-bluetooth-hardware-technology.png',
+    actionButton: 'Ver ofertas',
+    discount: false
   }
 ];
+
+export function CardColecao(props) {
+  return (
+    <Grid container sx={{ width: 450, height: 200, backgroundColor: '#D8D8D8', borderRadius: 2 }}>
+      <Grid item xs={6} >
+
+        <div style={{ height: 10, marginTop: 5  , marginLeft: 5 }}>
+          {
+              props.discount === true && <span className="discount" >30% OFF</span>
+          }
+        </div>
+
+        <Typography align="center" mt={3} variant="h4" color="black" fontWeight={"bold"}>{props.title}</Typography>
+        <Typography align="center" variant="h4" color="black" fontWeight={"bold"}>{props.description}</Typography>
+        <div style={{ marginTop: 10, marginLeft: 50 }}>
+          <Button sx={{
+            background: '#FFF',
+            color: '#FF0080',
+            borderRadius: 1,
+            border: 0,
+            height: 40,
+          }} >
+            Ver Colecão
+          </Button>
+        </div>
+      </Grid>
+
+      <Grid item xs={6}>
+        <img src={props.image} style={{ height: 200, width: 200, marginTop: 10 }} />
+      </Grid>
+
+    </Grid>
+  )
+}
 
 export default function Colecao() {
   //const [activeStep, setActiveStep] = React.useState(0);
   //const maxSteps = images.length;
 
   return (
-    <Tabs >
-      <Card sx={{ width: 345, margin: 5, height: 200, backgroundColor: '#F5FFFA' }}>
-        <CardMedia sx={{height: 100, width: 200 }}
-          component="img"
-          height="200"
-          image={images[0].image}
-          alt={images[0].title}
-        />
-      </Card>
-
-      <Card  sx={{ width: 345, margin: 5, height: 200, backgroundColor: '#F5FFFA' }}>
-        <CardMedia sx={{height: 100, width: 200 }}
-          component="img"
-          height="200"
-          image={images[1].image}
-          alt={images[1].title}
-        />
-
-        <CardActions>
-          <Button
-            href={'www.google.com.br'} Recipe >
-          </Button>
-        </CardActions>
-
-      </Card>
-
-      <Card  sx={{ width: 345, margin: 5 , height: 200, backgroundColor: '#F5FFFA' }}>
-        <CardMedia sx={{height: 100, width: 200 }}
-          component="img"
-          height="200"
-          image={images[2].image}
-          alt={images[2].title}
-        />
-      </Card>
-    </Tabs>
+    <div >
+      <Grid container spacing={5} justifyContent="center" alignItems="center" >
+      {images.map((step) => (
+        <Grid item  >
+          <CardColecao discount={step.discount} 
+                      image={step.image} 
+                      title={step.title} 
+                      description={step.description} />
+        </Grid>
+         ))}
+        </Grid>
+    </div>
   );
 }

@@ -13,6 +13,7 @@ section.container {
         flex: 1;
         // width: 50%;
     }
+
 };
 
 section.media {
@@ -20,3 +21,11 @@ section.media {
     padding-top: '56.25%'; // 16:9,
     margin-top: '30';
 }
+
+ .discount {
+        background-color: yellow;
+        border-radius: 15px;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 6px;
+    }
