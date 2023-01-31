@@ -77,6 +77,9 @@ export default function Colecao() {
 
   return (
     <div >
+      <Typography align="center" mt={3} variant="h5" color="black" fontWeight={"bold"}>Coleções em Destaque</Typography>
+      <br>
+      </br>
       <Grid container spacing={5} justifyContent="center" alignItems="center" >
       {images.map((step) => (
         <Grid item  >
