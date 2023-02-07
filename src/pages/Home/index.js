@@ -2,7 +2,7 @@ import Menu from "../../components/Menu";
 import Header from "../../components/Header";
 import Banner from "../../components/Banner";
 
-import Emphasis from "../../components/Emphasis";
+import TrendingCollection from "../../components/TrendingCollection";
 
 export default function Home() {
     return (
@@ -12,7 +12,7 @@ export default function Home() {
 
             <Banner/>
 
-            <Emphasis/>
+            <TrendingCollection/>
         </div>
     );
 }
